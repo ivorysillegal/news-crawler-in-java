@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.util.List;
 
 
-public class Test {
+public class Main {
 
     public static void main(String[] args) {
 
@@ -24,7 +24,7 @@ public class Test {
 
         // 仅用于网易新闻搜索页面
 //        可搜索处页面新闻的概览图 新闻标题 及 新闻主体详细内容 新闻主体配图
-        String url = "https://www.163.com/search?keyword=%E8%AF%88%E9%AA%97";
+        String url = "https://www.163.com/search?keyword=%E5%8F%8D%E8%AF%88";
 
         Document document = null;
         try {
@@ -88,7 +88,7 @@ public class Test {
                     // 链接地址，可以根据需求继续解析网址，获取新闻详细信息
                     String href = tag.attributes().get("href");
 
-                    String news = Test3.specificNews(href);
+                    String news = SpecificUtil.specificNews(href);
 
                     // 创建一行
 //                    Row row = sheet.createRow(sheet.getLastRowNum() + 1);
@@ -111,7 +111,7 @@ public class Test {
         System.out.println("正文数据爬取完毕");
 
 
-        try (FileOutputStream fileOut = new FileOutputStream("news_data.xlsx")) {
+        try (FileOutputStream fileOut = new FileOutputStream("fanzha.xlsx")) {
             workbook.write(fileOut);
             System.out.println("Data written to Excel file successfully.");
         } catch (IOException e) {
